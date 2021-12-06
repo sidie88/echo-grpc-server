@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+option go_package =  "github.com/sidie88/stockbit/grpc";
+
+package grpc;
+
+message MovieRequest {
+    int32 pagination = 1;
+    string searchword = 2;
+}
+
+message Movie {
+    string title = 1;
+    string year  = 2;
+    string imdb_id = 3;
+    string type  = 4;
+    string poster = 5;
+}
+
+message MovieResponse {
+    repeated Movie search = 1;
+    int32 total_results = 2;
+    string response = 3;
+}
+
+message MovieDetailId {
+    string imdb_id = 1;
+}
+
+message Rating {
+    string source = 1;
+    string value = 2;
+}
+
+message MovieDetailResponse {
+    string title = 1;
+    string year = 2;
+    string rated = 3;
+    string released = 4;
+    string runtime = 5;
+    string genre = 6;
+    string director = 7;
+    string writer = 8;
+    string actors = 9;
+    string plot = 10;
+    string language = 11;
+    string country = 12;
+    string awards = 13;
+    string poster = 14;
+    repeated Rating ratings = 15;
+    string metascore = 16;
+    string imdb_rating = 17;
+    string imdb_votes = 18;
+    string imdb_id = 19;
+    string type = 20;
+    string dvd = 21;
+    string box_office = 22;
+    string production = 23;
+    string website = 24;
+    string response = 25;
+}
+
+service Search {
+    rpc searchWithPagination(MovieRequest) returns (MovieResponse);
+    rpc getMovieDetail(MovieDetailId) returns (MovieDetailResponse);
+}
