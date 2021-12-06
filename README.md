@@ -24,3 +24,7 @@ You can change this config above by set it on environment variable
 /movie-detail
 ```
 - GRpc
+```
+grpc.Search/searchWithPagination
+grpc.Search/getMovieDetail
+```
